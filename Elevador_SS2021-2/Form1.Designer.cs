@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.INTERNO = new System.Windows.Forms.DataGridView();
             this.Coluna_Interna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
@@ -74,9 +74,9 @@
             // 
             // Coluna_Interna
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle4;
             this.Coluna_Interna.HeaderText = "";
             this.Coluna_Interna.MaxInputLength = 1;
             this.Coluna_Interna.Name = "Coluna_Interna";
@@ -151,9 +151,9 @@
             // 
             // DESCE_eXTERNO
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.DESCE_eXTERNO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.DESCE_eXTERNO.DefaultCellStyle = dataGridViewCellStyle5;
             this.DESCE_eXTERNO.HeaderText = "";
             this.DESCE_eXTERNO.MaxInputLength = 1;
             this.DESCE_eXTERNO.Name = "DESCE_eXTERNO";
@@ -181,9 +181,9 @@
             // 
             // SOBE_EXTERNO
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.SOBE_EXTERNO.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.SOBE_EXTERNO.DefaultCellStyle = dataGridViewCellStyle6;
             this.SOBE_EXTERNO.HeaderText = "";
             this.SOBE_EXTERNO.MaxInputLength = 1;
             this.SOBE_EXTERNO.Name = "SOBE_EXTERNO";
@@ -211,7 +211,7 @@
             // 
             // Tempo
             // 
-            this.Tempo.Interval = 200;
+            this.Tempo.Interval = 1000;
             this.Tempo.Tick += new System.EventHandler(this.Tempo_Tick);
             // 
             // Form1
