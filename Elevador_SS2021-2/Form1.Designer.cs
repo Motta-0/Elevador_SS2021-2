@@ -28,19 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.INTERNO = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.ELEVADOR = new System.Windows.Forms.DataGridView();
-            this.Coluna_Interna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Coluna_Imagem = new System.Windows.Forms.DataGridViewImageColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.DESCE_EX = new System.Windows.Forms.DataGridView();
             this.SOBE_EX = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Coluna_Interna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCE_eXTERNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SOBE_EXTERNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Coluna_Imagem = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.INTERNO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ELEVADOR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DESCE_EX)).BeginInit();
@@ -65,6 +67,8 @@
             this.INTERNO.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.INTERNO.Size = new System.Drawing.Size(203, 450);
             this.INTERNO.TabIndex = 0;
+            this.INTERNO.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.INTERNO_CellClick);
+            this.INTERNO.SelectionChanged += new System.EventHandler(this.INTERNO_SelectionChanged);
             // 
             // label1
             // 
@@ -93,17 +97,14 @@
             this.ELEVADOR.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ELEVADOR.Size = new System.Drawing.Size(405, 559);
             this.ELEVADOR.TabIndex = 2;
+            this.ELEVADOR.SelectionChanged += new System.EventHandler(this.ELEVADOR_SelectionChanged);
             // 
-            // Coluna_Interna
+            // Coluna_Imagem
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Coluna_Interna.HeaderText = "";
-            this.Coluna_Interna.MaxInputLength = 1;
-            this.Coluna_Interna.Name = "Coluna_Interna";
-            this.Coluna_Interna.ReadOnly = true;
-            this.Coluna_Interna.Width = 150;
+            this.Coluna_Imagem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Coluna_Imagem.HeaderText = "";
+            this.Coluna_Imagem.Name = "Coluna_Imagem";
+            this.Coluna_Imagem.ReadOnly = true;
             // 
             // label2
             // 
@@ -132,6 +133,8 @@
             this.DESCE_EX.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.DESCE_EX.Size = new System.Drawing.Size(130, 449);
             this.DESCE_EX.TabIndex = 4;
+            this.DESCE_EX.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DESCE_EX_CellClick);
+            this.DESCE_EX.SelectionChanged += new System.EventHandler(this.DESCE_EX_SelectionChanged);
             // 
             // SOBE_EX
             // 
@@ -150,6 +153,8 @@
             this.SOBE_EX.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.SOBE_EX.Size = new System.Drawing.Size(130, 449);
             this.SOBE_EX.TabIndex = 5;
+            this.SOBE_EX.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SOBE_EX_CellClick);
+            this.SOBE_EX.SelectionChanged += new System.EventHandler(this.SOBE_EX_SelectionChanged);
             // 
             // label3
             // 
@@ -171,8 +176,22 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "SOBE";
             // 
+            // Coluna_Interna
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Coluna_Interna.HeaderText = "";
+            this.Coluna_Interna.MaxInputLength = 1;
+            this.Coluna_Interna.Name = "Coluna_Interna";
+            this.Coluna_Interna.ReadOnly = true;
+            this.Coluna_Interna.Width = 150;
+            // 
             // DESCE_eXTERNO
             // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.DESCE_eXTERNO.DefaultCellStyle = dataGridViewCellStyle2;
             this.DESCE_eXTERNO.HeaderText = "";
             this.DESCE_eXTERNO.MaxInputLength = 1;
             this.DESCE_eXTERNO.Name = "DESCE_eXTERNO";
@@ -180,17 +199,13 @@
             // 
             // SOBE_EXTERNO
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.SOBE_EXTERNO.DefaultCellStyle = dataGridViewCellStyle3;
             this.SOBE_EXTERNO.HeaderText = "";
             this.SOBE_EXTERNO.MaxInputLength = 1;
             this.SOBE_EXTERNO.Name = "SOBE_EXTERNO";
             this.SOBE_EXTERNO.ReadOnly = true;
-            // 
-            // Coluna_Imagem
-            // 
-            this.Coluna_Imagem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Coluna_Imagem.HeaderText = "";
-            this.Coluna_Imagem.Name = "Coluna_Imagem";
-            this.Coluna_Imagem.ReadOnly = true;
             // 
             // Form1
             // 
@@ -221,16 +236,16 @@
 
         private System.Windows.Forms.DataGridView INTERNO;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Coluna_Interna;
         private System.Windows.Forms.DataGridView ELEVADOR;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView DESCE_EX;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DESCE_eXTERNO;
         private System.Windows.Forms.DataGridView SOBE_EX;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SOBE_EXTERNO;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewImageColumn Coluna_Imagem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Coluna_Interna;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DESCE_eXTERNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOBE_EXTERNO;
     }
 }
 
