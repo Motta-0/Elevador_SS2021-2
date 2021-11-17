@@ -19,7 +19,6 @@ namespace Elevador_SS2021_2
             //Criando a array do funcionamento interno
             INTERNO.RowTemplate.Height = 60;
             INTERNO.Rows.Add(6);
-
             for(int i=0; i<6; i++)
             {
                 if (i == 5)
@@ -37,7 +36,6 @@ namespace Elevador_SS2021_2
             //Criando a array do funcionamento subida externa
             SOBE_EX.RowTemplate.Height = 60;
             SOBE_EX.Rows.Add(6);
-
             for (int i = 0; i < 6; i++)
             {
                 if (i == 5)
@@ -51,7 +49,6 @@ namespace Elevador_SS2021_2
             //Criando a array do funcionamento descida externa
             DESCE_EX.RowTemplate.Height = 60;
             DESCE_EX.Rows.Add(6);
-
             for (int i = 0; i < 6; i++)
             {
                 if (i == 5)
@@ -66,6 +63,12 @@ namespace Elevador_SS2021_2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Definindo as imagens
+            AbrirImagem = new Bitmap("ElevAberto.gif");
+            FecharImagem = new Bitmap("ElevFechado.gif");
+            DataGridViewImageColumn imageColumn = (DataGridViewImageColumn)ELEVADOR.Columns["Coluna_Imagem"];
+            imageColumn.DefaultCellStyle.NullValue = null;
+            ELEVADOR[0, 5].Value = FecharImagem;
 
         }
     }

@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.INTERNO = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.ELEVADOR = new System.Windows.Forms.DataGridView();
             this.Coluna_Interna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Coluna_Imagem = new System.Windows.Forms.DataGridViewImageColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.DESCE_EX = new System.Windows.Forms.DataGridView();
             this.SOBE_EX = new System.Windows.Forms.DataGridView();
@@ -41,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.DESCE_eXTERNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SOBE_EXTERNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Coluna_Imagem = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.INTERNO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ELEVADOR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DESCE_EX)).BeginInit();
@@ -96,22 +96,14 @@
             // 
             // Coluna_Interna
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle3;
             this.Coluna_Interna.HeaderText = "";
             this.Coluna_Interna.MaxInputLength = 1;
             this.Coluna_Interna.Name = "Coluna_Interna";
             this.Coluna_Interna.ReadOnly = true;
             this.Coluna_Interna.Width = 150;
-            // 
-            // Coluna_Imagem
-            // 
-            this.Coluna_Imagem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Coluna_Imagem.HeaderText = "";
-            this.Coluna_Imagem.Name = "Coluna_Imagem";
-            this.Coluna_Imagem.ReadOnly = true;
-            this.Coluna_Imagem.Width = 300;
             // 
             // label2
             // 
@@ -193,6 +185,13 @@
             this.SOBE_EXTERNO.Name = "SOBE_EXTERNO";
             this.SOBE_EXTERNO.ReadOnly = true;
             // 
+            // Coluna_Imagem
+            // 
+            this.Coluna_Imagem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Coluna_Imagem.HeaderText = "";
+            this.Coluna_Imagem.Name = "Coluna_Imagem";
+            this.Coluna_Imagem.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -224,7 +223,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Coluna_Interna;
         private System.Windows.Forms.DataGridView ELEVADOR;
-        private System.Windows.Forms.DataGridViewImageColumn Coluna_Imagem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView DESCE_EX;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCE_eXTERNO;
@@ -232,6 +230,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SOBE_EXTERNO;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewImageColumn Coluna_Imagem;
     }
 }
 
