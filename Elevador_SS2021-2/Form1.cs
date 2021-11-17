@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Elevador_SS2021_2
@@ -20,6 +14,10 @@ namespace Elevador_SS2021_2
         int[] ChamarSubir = new int[6];
         int[] ChamarDescer = new int[6];
         String[] NumerarAndares = new string[6] { "T", "1°", "2°", "3°", "4°", "5°" };
+        //NumerarAndares 
+        enum Andares {T, A1, A2, A3, A4, A5};
+        Andares Andar = Andares.T;//Andar inicial;
+
 
         public Form1()
         {
@@ -72,6 +70,10 @@ namespace Elevador_SS2021_2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Definindo o tempo
+            Tempo.Interval = 200;
+            Tempo.Start();
+
             //Definindo as imagens
             AbrirImagem = new Bitmap("ElevAberto.gif");
             FecharImagem = new Bitmap("ElevFechado.gif");
@@ -133,6 +135,43 @@ namespace Elevador_SS2021_2
             int Linha = SOBE_EX.CurrentRow.Index;
             ChamarSubir[5 - Linha] = 5 - Linha + 1;
             SOBE_EX.Rows[Linha].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+        }
+
+        private void Tempo_Tick(object sender, EventArgs e)
+        {
+            //Movendo o elevador
+            for (int i = 0; i < 6; i++)
+            {
+                int chamar = ChamarInterno[i];
+                int pos = (int)Andar;
+                if (chamar != 0) //se foi chamado
+                {
+                    if (i != pos) //se a posição que foi apertada for diferente de i
+                    {
+                        ELEVADOR[0, 5 - pos].Value = null; // O elevador vai para o espaço vazio 
+
+                        if (i > pos)//O elevador sobe
+                        {
+                            pos++;
+                            ELEVADOR[0, 5 - pos].Value = FecharImagem;
+                            Andar++;
+                        }
+                        else if (i < pos) // O elevador desce
+                        {
+                            pos--;
+                            ELEVADOR[0, 5 - pos].Value = FecharImagem;
+                            Andar--;
+                        }
+                    }
+                    else //se for iguall
+                    {
+                        ELEVADOR[0, 5 - pos].Value = FecharImagem;
+                        ChamarInterno[i] = 0;
+                        INTERNO.Rows[5 - pos].DefaultCellStyle.BackColor = Color.White;
+                    }
+                    break;
+                }
+            }
         }
     }
 }
