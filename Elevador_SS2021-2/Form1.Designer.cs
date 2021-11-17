@@ -45,7 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Tempo = new System.Windows.Forms.Timer(this.components);
-            this.Lista_Apertado = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.INTERNO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ELEVADOR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DESCE_EX)).BeginInit();
@@ -215,22 +214,11 @@
             this.Tempo.Interval = 1000;
             this.Tempo.Tick += new System.EventHandler(this.Tempo_Tick);
             // 
-            // Lista_Apertado
-            // 
-            this.Lista_Apertado.FormattingEnabled = true;
-            this.Lista_Apertado.ItemHeight = 16;
-            this.Lista_Apertado.Location = new System.Drawing.Point(1286, 270);
-            this.Lista_Apertado.Name = "Lista_Apertado";
-            this.Lista_Apertado.ScrollAlwaysVisible = true;
-            this.Lista_Apertado.Size = new System.Drawing.Size(240, 356);
-            this.Lista_Apertado.TabIndex = 8;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1534, 654);
-            this.Controls.Add(this.Lista_Apertado);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SOBE_EX);
@@ -266,7 +254,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCE_eXTERNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn SOBE_EXTERNO;
         private System.Windows.Forms.Timer Tempo;
-        private System.Windows.Forms.ListBox Lista_Apertado;
     }
 }
 

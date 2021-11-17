@@ -212,12 +212,18 @@ namespace Elevador_SS2021_2
                         Atual++;
                         ELEVADOR[0, 5 - Atual].Value = FecharImagem;
                         Andar++;
+
+                        if (chamar == Atual)     
+                            ELEVADOR[0, 5 - Atual].Value = AbrirImagem;
                     }
                     else  // O elevador desce
                     {
                         Atual--;
                         ELEVADOR[0, 5 - Atual].Value = FecharImagem;
                         Andar--;
+
+                        if (chamar == Atual)
+                            ELEVADOR[0, 5 - Atual].Value = AbrirImagem;
                     }
                 }
                 else
