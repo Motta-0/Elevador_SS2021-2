@@ -24,6 +24,10 @@ namespace Elevador_SS2021_2
         int[] FilaInt = new int[FILA];
         int chamarAndar = 0; //Não foi chamado
 
+        enum DIRECAO { SOBE,DESCE,PARA};
+        DIRECAO direcao = DIRECAO.PARA;
+
+
 
         public Form1()
         {
@@ -100,7 +104,9 @@ namespace Elevador_SS2021_2
             {
                 FilaInt[i] = 0;
             }
-           
+
+            direcao = DIRECAO.PARA;
+            chamarAndar = 0;
         }
 
         //Desligando o display de cada celula
@@ -160,11 +166,14 @@ namespace Elevador_SS2021_2
             /*/Movendo o elevador TESTE__DEU CERTO UHHULL
             for (int i = 0; i < 6; i++)
             {
-                int chamar = ChamarInterno[i];
+                int chamar1 = ChamarInterno[i];
+                int chamar2 = ChamarDescer[i];
+                int chamar3 = ChamarSubir[i];
                 int pos = (int)Andar;
 
-                if (chamar != 0) //se foi chamado
+                if ((chamar1 != 0)||(chamar2 != 0) ||(chamar3 != 0)) //se foi chamado
                 {
+                    
                     if (i != pos) //se a posição que foi apertada for diferente de i
                     {
                         ELEVADOR[0, 5 - pos].Value = null; // O elevador vai para o espaço vazio 
@@ -187,13 +196,15 @@ namespace Elevador_SS2021_2
                         ELEVADOR[0, 5 - pos].Value = FecharImagem;
                         ChamarInterno[i] = 0;
                         INTERNO.Rows[5 - pos].DefaultCellStyle.BackColor = Color.White;
+                        SOBE_EX.Rows[5 - pos].DefaultCellStyle.BackColor = Color.White;
+                        DESCE_EX.Rows[5 - pos].DefaultCellStyle.BackColor = Color.White;
                     }
                     break;
                 }
             }*/
 
 
-            //Dando preferencia para os botões apertados primeiro
+            /*/Dando preferencia para os botões apertados primeiro
             int Atual = (int)Andar;
             if (chamarAndar == 0)
                 chamarAndar = tiraFILA();
@@ -237,11 +248,86 @@ namespace Elevador_SS2021_2
                     DESCE_EX.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
                     chamarAndar = 0;
                 }
+            }*/
+
+
+            switch(direcao)
+            {
+                case DIRECAO.PARA:
+                    Inicio();
+                    break;
+                
+            }
+
+        }
+
+        //DIVIDINDO O MOVIMENTO DO ELEVADOR EM FUNÇÕES  
+        private void Inicio()
+        {
+            int Atual = (int)Andar;
+            if (chamarAndar == 0)
+                chamarAndar = tiraFILA();
+
+
+            if (chamarAndar > 0)
+            {
+                int chamar = chamarAndar - 1;
+
+                if (chamar != Atual) //Ta no lugar errado
+                {
+                    ELEVADOR[0, 5 - Atual].Value = null; //Anda pra um espaço vazio
+
+                    if (chamar > Atual)//O elevador sobe
+                    {
+                        Sobe();
+                    }
+                    else //O elevador Desce
+                        Desce();  
+                }
+                else
+                {
+                    Para();
+                }
             }
         }
-           
 
-        
+        private void Sobe()
+        {
+            int Atual = (int)Andar;
+            int chamar = chamarAndar - 1;
+            Atual++;
+            ELEVADOR[0, 5 - Atual].Value = FecharImagem;
+            Andar++;
+
+            if (chamar == Atual)
+                ELEVADOR[0, 5 - Atual].Value = AbrirImagem;  
+        }
+
+        private void Desce()
+        {
+            int Atual = (int)Andar;
+            int chamar = chamarAndar - 1;
+            Atual--;
+            ELEVADOR[0, 5 - Atual].Value = FecharImagem;
+            Andar--;
+
+            if (chamar == Atual)
+                ELEVADOR[0, 5 - Atual].Value = AbrirImagem;
+        }
+
+        private void Para()
+        {
+            int Atual = (int)Andar;
+            int chamar = chamarAndar - 1;
+            ELEVADOR[0, 5 - Atual].Value = FecharImagem;
+            ChamarInterno[chamar] = 0;
+            ChamarSubir[chamar] = 0;
+            ChamarDescer[chamar] = 0;
+            INTERNO.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
+            SOBE_EX.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
+            DESCE_EX.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
+            chamarAndar = 0;
+        }
 
         //Função que joga os andares mais altos primeiro
         private void chamarFILA(int p)
