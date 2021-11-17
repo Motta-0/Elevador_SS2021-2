@@ -19,6 +19,14 @@ namespace Elevador_SS2021_2
         enum Andares {T, A1, A2, A3, A4, A5};
         Andares Andar = Andares.T;//Andar inicial
 
+        //Definir as direções
+        enum Direção { PARAR, SUBIR, DESCER};
+        Direção direção = Direção.PARAR;
+        int auxControle = 0;
+
+        //Altura
+        enum Mais { ALTO, BAIXO};
+
         //Prioridade para os botões apertados
         const int FILA = 6;
         int[] FilaInt = new int[FILA];
@@ -100,8 +108,7 @@ namespace Elevador_SS2021_2
             {
                 FilaInt[i] = 0;
             }
-            
-
+           
         }
 
         //Desligando o display de cada celula
@@ -193,47 +200,108 @@ namespace Elevador_SS2021_2
                 }
             }*/
 
-            //Dando preferencia para os botões apertados primeiro
+
+            /*/Dando preferencia para os botões apertados primeiro
+               int Atual = (int)Andar;
+               if (chamarAndar == 0)
+                   chamarAndar = tiraFILA();
+
+
+               if (chamarAndar > 0)
+               {
+                   int chamar = chamarAndar - 1;
+
+                   if(chamar != Atual) //Ta no lugar errado
+                   {
+                       ELEVADOR[0, 5 - Atual].Value = null; //Anda pra um espaço vazio
+
+                       if(chamar > Atual)//O elevador sobe
+                       {
+                           Atual++;
+                           ELEVADOR[0, 5 - Atual].Value = FecharImagem;
+                           Andar++;
+                       }
+                       else  // O elevador desce
+                       {
+                           Atual--;
+                           ELEVADOR[0, 5 - Atual].Value = FecharImagem;
+                           Andar--;
+                       }
+                   }
+                   else
+                   {
+                       ELEVADOR[0, 5 - Atual].Value = FecharImagem;
+                       ChamarInterno[chamar] = 0;
+                       ChamarSubir[chamar] = 0;
+                       ChamarDescer[chamar] = 0;
+                       INTERNO.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
+                       SOBE_EX.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
+                       DESCE_EX.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
+                       chamarAndar = 0;
+                   }
+               }
+           */
+
+
+            //Separando os movimentos em funções
+            if (auxControle > 0)
+            {
+                auxControle--;
+                return;
+            }
+            switch (direção)
+            {
+                case Direção.PARAR;
+                    Comeca();
+                    break;
+                case Direção.SUBIR;
+                    Sobe();
+                    break;
+                case Direção.DESCER;
+                    Desce();
+                    break;
+            }
+        }
+
+
+        //Funçao que começa o movimento
+        private void Comeca()
+        {
             int Atual = (int)Andar;
             if (chamarAndar == 0)
                 chamarAndar = tiraFILA();
-            
 
             if (chamarAndar > 0)
             {
                 int chamar = chamarAndar - 1;
 
-                if(chamar != Atual) //Ta no lugar errado
+                if (chamar != Atual) //Ta no lugar errado
                 {
                     ELEVADOR[0, 5 - Atual].Value = null; //Anda pra um espaço vazio
 
-                    if(chamar > Atual)//O elevador sobe
+                    if (chamar > Atual)//O elevador sobe
                     {
-                        Atual++;
-                        ELEVADOR[0, 5 - Atual].Value = FecharImagem;
-                        Andar++;
+                        Sobe();
+                        direção = Direção.SUBIR;
                     }
-                    else  // O elevador desce
+                    else // O elevador desce
                     {
-                        Atual--;
-                        ELEVADOR[0, 5 - Atual].Value = FecharImagem;
-                        Andar--;
+                        Desce();
+                        direção = Direção.DESCER;
                     }
                 }
-                else
+                else // Mesmo andar
                 {
-                    ELEVADOR[0, 5 - Atual].Value = FecharImagem;
-                    ChamarInterno[chamar] = 0;
-                    ChamarSubir[chamar] = 0;
-                    ChamarDescer[chamar] = 0;
-                    INTERNO.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
-                    SOBE_EX.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
-                    DESCE_EX.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
-                    chamarAndar = 0;
+                    FechaPorta();
                 }
             }
         }
 
+        //Função da subida
+        private void Sobe()
+        {
+
+        }
 
         //Função que joga os andares mais altos primeiro
         private void chamarFILA(int p)
@@ -261,6 +329,8 @@ namespace Elevador_SS2021_2
 
             return ret;
         }
+
+       
 
     }
 }
