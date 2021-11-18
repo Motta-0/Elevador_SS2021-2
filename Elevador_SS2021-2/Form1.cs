@@ -14,7 +14,7 @@ namespace Elevador_SS2021_2
         int[] ChamarInterno = new int[6];
         int[] ChamarSubir = new int[6];
         int[] ChamarDescer = new int[6];
-        String[] NumerarAndares = new string[6] { "T", "1°", "2°", "3°", "4°", "5°" };
+        String[] NumerarAndares = new string[6] { "T", "2°", "3°", "4°", "5°", "6°"};
 
         //NumerarAndares 
         enum Andares { T, A2, A3, A4, A5, A6 };
@@ -81,7 +81,7 @@ namespace Elevador_SS2021_2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            log.Info("Aplicação Iniciada");
+            
 
             //Definindo o tempo
             Tempo.Interval = 1000;
@@ -111,6 +111,8 @@ namespace Elevador_SS2021_2
             direcao = DIRECAO.PARA;
             chamarAndar = 0;
         }
+
+
 
         //Desligando o display de cada celula
         private void INTERNO_SelectionChanged(object sender, EventArgs e)
@@ -171,6 +173,8 @@ namespace Elevador_SS2021_2
             //testando Console.WriteLine(Linha);
             chamarFILA(chamar);
             INTERNO.Rows[Linha].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+            string txt1 = string.Format("Andar chamado: ", Linha);
+            log.Info(txt1);
         }
 
         //Fazendo de cada celula da array um botão
@@ -300,13 +304,6 @@ namespace Elevador_SS2021_2
 
             return ret;
         }
-
-
-    }
-
-    class Automatico : Form1 
-    { 
-       
 
 
     }
