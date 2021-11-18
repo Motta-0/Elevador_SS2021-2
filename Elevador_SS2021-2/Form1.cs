@@ -173,7 +173,7 @@ namespace Elevador_SS2021_2
             //testando Console.WriteLine(Linha);
             chamarFILA(chamar);
             INTERNO.Rows[Linha].DefaultCellStyle.BackColor = Color.CornflowerBlue;
-            string txt1 = string.Format("Andar chamado: ", Linha);
+            string txt1 = string.Format("Andar chamado dentro do elevador: {0}", chamar);
             log.Info(txt1);
         }
 
