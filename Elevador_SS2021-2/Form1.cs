@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -16,7 +17,7 @@ namespace Elevador_SS2021_2
         String[] NumerarAndares = new string[6] { "T", "1°", "2°", "3°", "4°", "5°" };
 
         //NumerarAndares 
-        enum Andares {T, A1, A2, A3, A4, A5};
+        enum Andares { T, A2, A3, A4, A5, A6 };
         Andares Andar = Andares.T;//Andar inicial
 
         //Prioridade para os botões apertados
@@ -24,10 +25,10 @@ namespace Elevador_SS2021_2
         int[] FilaInt = new int[FILA];
         int chamarAndar = 0; //Não foi chamado
 
-        enum DIRECAO { SOBE,DESCE,PARA};
+        enum DIRECAO { SOBE, DESCE, PARA };
         DIRECAO direcao = DIRECAO.PARA;
 
-
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public Form1()
         {
@@ -36,7 +37,7 @@ namespace Elevador_SS2021_2
             //Criando a array do funcionamento interno
             INTERNO.RowTemplate.Height = 60;
             INTERNO.Rows.Add(6);
-            for(int i=0; i<6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (i == 5)
                 {
@@ -80,6 +81,8 @@ namespace Elevador_SS2021_2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            log.Info("Aplicação Iniciada");
+
             //Definindo o tempo
             Tempo.Interval = 1000;
             Tempo.Start();
@@ -92,7 +95,7 @@ namespace Elevador_SS2021_2
             ELEVADOR[0, 5].Value = FecharImagem;
 
             //Zerando a informação dos botões das Arrays
-            for(int i=0; i<6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 ChamarInterno[i] = 0;
                 ChamarDescer[i] = 0;
@@ -100,7 +103,7 @@ namespace Elevador_SS2021_2
             }
 
             //Zerando a prioridade
-            for (int i=0; i<FILA; i++)
+            for (int i = 0; i < FILA; i++)
             {
                 FilaInt[i] = 0;
             }
@@ -130,6 +133,35 @@ namespace Elevador_SS2021_2
             SOBE_EX.Rows[SOBE_EX.CurrentCell.RowIndex].Selected = false;
         }
 
+        //Definindo os botões de automatico e manual
+        private void Automatic_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Automatic.Checked == true)
+            {
+                Manual.Checked = false;
+
+            }
+            else
+            {
+                Manual.Checked = true;
+            }
+
+        }
+
+
+        //Definindo os botões de automatico e manual
+        private void Manual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Manual.Checked == true)
+            {
+                Automatic.Checked = false;
+            }
+            else
+            {
+                Automatic.Checked = true;
+            }
+        }
+
         //Fazendo de cada celula da array um botão
         private void INTERNO_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -138,7 +170,7 @@ namespace Elevador_SS2021_2
             ChamarInterno[5 - Linha] = chamar;
             //testando Console.WriteLine(Linha);
             chamarFILA(chamar);
-            INTERNO.Rows[Linha].DefaultCellStyle.BackColor = Color.CornflowerBlue;           
+            INTERNO.Rows[Linha].DefaultCellStyle.BackColor = Color.CornflowerBlue;
         }
 
         //Fazendo de cada celula da array um botão
@@ -163,103 +195,16 @@ namespace Elevador_SS2021_2
 
         private void Tempo_Tick(object sender, EventArgs e)
         {
-            /*/Movendo o elevador TESTE__DEU CERTO UHHULL
-            for (int i = 0; i < 6; i++)
-            {
-                int chamar1 = ChamarInterno[i];
-                int chamar2 = ChamarDescer[i];
-                int chamar3 = ChamarSubir[i];
-                int pos = (int)Andar;
-
-                if ((chamar1 != 0)||(chamar2 != 0) ||(chamar3 != 0)) //se foi chamado
-                {
-                    
-                    if (i != pos) //se a posição que foi apertada for diferente de i
-                    {
-                        ELEVADOR[0, 5 - pos].Value = null; // O elevador vai para o espaço vazio 
-
-                        if (i > pos)//O elevador sobe
-                        {
-                            pos++;
-                            ELEVADOR[0, 5 - pos].Value = FecharImagem;
-                            Andar++;
-                        }
-                        else if (i < pos) // O elevador desce
-                        {
-                            pos--;
-                            ELEVADOR[0, 5 - pos].Value = FecharImagem;
-                            Andar--;
-                        }
-                    }
-                    else //se for iguall
-                    {
-                        ELEVADOR[0, 5 - pos].Value = FecharImagem;
-                        ChamarInterno[i] = 0;
-                        INTERNO.Rows[5 - pos].DefaultCellStyle.BackColor = Color.White;
-                        SOBE_EX.Rows[5 - pos].DefaultCellStyle.BackColor = Color.White;
-                        DESCE_EX.Rows[5 - pos].DefaultCellStyle.BackColor = Color.White;
-                    }
-                    break;
-                }
-            }*/
-
-
-            /*/Dando preferencia para os botões apertados primeiro
-            int Atual = (int)Andar;
-            if (chamarAndar == 0)
-                chamarAndar = tiraFILA();
-
-
-            if (chamarAndar > 0)
-            {
-                int chamar = chamarAndar - 1;
-
-                if (chamar != Atual) //Ta no lugar errado
-                {
-                    ELEVADOR[0, 5 - Atual].Value = null; //Anda pra um espaço vazio
-
-                    if (chamar > Atual)//O elevador sobe
-                    {
-                        Atual++;
-                        ELEVADOR[0, 5 - Atual].Value = FecharImagem;
-                        Andar++;
-
-                        if (chamar == Atual)     
-                            ELEVADOR[0, 5 - Atual].Value = AbrirImagem;
-                    }
-                    else  // O elevador desce
-                    {
-                        Atual--;
-                        ELEVADOR[0, 5 - Atual].Value = FecharImagem;
-                        Andar--;
-
-                        if (chamar == Atual)
-                            ELEVADOR[0, 5 - Atual].Value = AbrirImagem;
-                    }
-                }
-                else
-                {
-                    ELEVADOR[0, 5 - Atual].Value = FecharImagem;
-                    ChamarInterno[chamar] = 0;
-                    ChamarSubir[chamar] = 0;
-                    ChamarDescer[chamar] = 0;
-                    INTERNO.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
-                    SOBE_EX.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
-                    DESCE_EX.Rows[5 - Atual].DefaultCellStyle.BackColor = Color.White;
-                    chamarAndar = 0;
-                }
-            }*/
-
-
-            switch(direcao)
+            switch (direcao)
             {
                 case DIRECAO.PARA:
                     Inicio();
                     break;
-                
+
             }
 
         }
+
 
         //DIVIDINDO O MOVIMENTO DO ELEVADOR EM FUNÇÕES  
         private void Inicio()
@@ -282,7 +227,7 @@ namespace Elevador_SS2021_2
                         Sobe();
                     }
                     else //O elevador Desce
-                        Desce();  
+                        Desce();
                 }
                 else
                 {
@@ -300,7 +245,7 @@ namespace Elevador_SS2021_2
             Andar++;
 
             if (chamar == Atual)
-                ELEVADOR[0, 5 - Atual].Value = AbrirImagem;  
+                ELEVADOR[0, 5 - Atual].Value = AbrirImagem;
         }
 
         private void Desce()
@@ -332,9 +277,9 @@ namespace Elevador_SS2021_2
         //Função que joga os andares mais altos primeiro
         private void chamarFILA(int p)
         {
-            for (int i=0; i<FILA; i++)
+            for (int i = 0; i < FILA; i++)
             {
-                if(FilaInt[i] == 0)
+                if (FilaInt[i] == 0)
                 {
                     FilaInt[i] = p;
                     break;
@@ -347,7 +292,7 @@ namespace Elevador_SS2021_2
         {
             int ret = FilaInt[0];
             int i;
-            for (i=1; i < FILA; i++)
+            for (i = 1; i < FILA; i++)
             {
                 FilaInt[i - 1] = FilaInt[i];
             }
@@ -355,6 +300,14 @@ namespace Elevador_SS2021_2
 
             return ret;
         }
+
+
+    }
+
+    class Automatico : Form1 
+    { 
+       
+
 
     }
 }

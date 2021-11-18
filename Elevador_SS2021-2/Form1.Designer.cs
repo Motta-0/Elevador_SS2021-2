@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.INTERNO = new System.Windows.Forms.DataGridView();
             this.Coluna_Interna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,6 +45,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Tempo = new System.Windows.Forms.Timer(this.components);
+            this.Automatic = new System.Windows.Forms.CheckBox();
+            this.Manual = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.INTERNO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ELEVADOR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DESCE_EX)).BeginInit();
@@ -74,9 +76,9 @@
             // 
             // Coluna_Interna
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle4;
             this.Coluna_Interna.HeaderText = "";
             this.Coluna_Interna.MaxInputLength = 1;
             this.Coluna_Interna.Name = "Coluna_Interna";
@@ -151,9 +153,9 @@
             // 
             // DESCE_eXTERNO
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.DESCE_eXTERNO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.DESCE_eXTERNO.DefaultCellStyle = dataGridViewCellStyle5;
             this.DESCE_eXTERNO.HeaderText = "";
             this.DESCE_eXTERNO.MaxInputLength = 1;
             this.DESCE_eXTERNO.Name = "DESCE_eXTERNO";
@@ -181,9 +183,9 @@
             // 
             // SOBE_EXTERNO
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.SOBE_EXTERNO.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.SOBE_EXTERNO.DefaultCellStyle = dataGridViewCellStyle6;
             this.SOBE_EXTERNO.HeaderText = "";
             this.SOBE_EXTERNO.MaxInputLength = 1;
             this.SOBE_EXTERNO.Name = "SOBE_EXTERNO";
@@ -214,11 +216,37 @@
             this.Tempo.Interval = 1000;
             this.Tempo.Tick += new System.EventHandler(this.Tempo_Tick);
             // 
+            // Automatic
+            // 
+            this.Automatic.AutoSize = true;
+            this.Automatic.Location = new System.Drawing.Point(998, 92);
+            this.Automatic.Name = "Automatic";
+            this.Automatic.Size = new System.Drawing.Size(121, 21);
+            this.Automatic.TabIndex = 8;
+            this.Automatic.Text = "AUTOMATICO";
+            this.Automatic.UseVisualStyleBackColor = true;
+            this.Automatic.CheckedChanged += new System.EventHandler(this.Automatic_CheckedChanged);
+            // 
+            // Manual
+            // 
+            this.Manual.AutoSize = true;
+            this.Manual.Checked = true;
+            this.Manual.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Manual.Location = new System.Drawing.Point(1198, 92);
+            this.Manual.Name = "Manual";
+            this.Manual.Size = new System.Drawing.Size(87, 21);
+            this.Manual.TabIndex = 9;
+            this.Manual.Text = "MANUAL";
+            this.Manual.UseVisualStyleBackColor = true;
+            this.Manual.CheckedChanged += new System.EventHandler(this.Manual_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1333, 650);
+            this.Controls.Add(this.Manual);
+            this.Controls.Add(this.Automatic);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SOBE_EX);
@@ -254,6 +282,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCE_eXTERNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn SOBE_EXTERNO;
         private System.Windows.Forms.Timer Tempo;
+        private System.Windows.Forms.CheckBox Automatic;
+        private System.Windows.Forms.CheckBox Manual;
     }
 }
 
