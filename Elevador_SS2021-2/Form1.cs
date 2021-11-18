@@ -208,7 +208,7 @@ namespace Elevador_SS2021_2
             }
 
         }
-
+        //oi
 
         //DIVIDINDO O MOVIMENTO DO ELEVADOR EM FUNÇÕES  
         private void Inicio()
