@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace Elevador_SS2021_2
 {
+    //omoo
     public partial class Form1 : Form
     {
         Image AbrirImagem = null;
@@ -178,6 +179,7 @@ namespace Elevador_SS2021_2
                 Automatic.Checked = true;
             }
         }
+
 
         //Fazendo de cada celula da array um botão
         private void INTERNO_CellClick(object sender, DataGridViewCellEventArgs e)
