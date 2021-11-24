@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.INTERNO = new System.Windows.Forms.DataGridView();
             this.Coluna_Interna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
@@ -76,9 +76,9 @@
             // 
             // Coluna_Interna
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Coluna_Interna.DefaultCellStyle = dataGridViewCellStyle1;
             this.Coluna_Interna.HeaderText = "";
             this.Coluna_Interna.MaxInputLength = 1;
             this.Coluna_Interna.Name = "Coluna_Interna";
@@ -153,9 +153,9 @@
             // 
             // DESCE_eXTERNO
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.DESCE_eXTERNO.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.DESCE_eXTERNO.DefaultCellStyle = dataGridViewCellStyle2;
             this.DESCE_eXTERNO.HeaderText = "";
             this.DESCE_eXTERNO.MaxInputLength = 1;
             this.DESCE_eXTERNO.Name = "DESCE_eXTERNO";
@@ -183,9 +183,9 @@
             // 
             // SOBE_EXTERNO
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.SOBE_EXTERNO.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.SOBE_EXTERNO.DefaultCellStyle = dataGridViewCellStyle3;
             this.SOBE_EXTERNO.HeaderText = "";
             this.SOBE_EXTERNO.MaxInputLength = 1;
             this.SOBE_EXTERNO.Name = "SOBE_EXTERNO";
@@ -219,7 +219,7 @@
             // Automatic
             // 
             this.Automatic.AutoSize = true;
-            this.Automatic.Location = new System.Drawing.Point(998, 92);
+            this.Automatic.Location = new System.Drawing.Point(1031, 83);
             this.Automatic.Name = "Automatic";
             this.Automatic.Size = new System.Drawing.Size(121, 21);
             this.Automatic.TabIndex = 8;
@@ -232,7 +232,7 @@
             this.Manual.AutoSize = true;
             this.Manual.Checked = true;
             this.Manual.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Manual.Location = new System.Drawing.Point(1198, 92);
+            this.Manual.Location = new System.Drawing.Point(1196, 83);
             this.Manual.Name = "Manual";
             this.Manual.Size = new System.Drawing.Size(87, 21);
             this.Manual.TabIndex = 9;

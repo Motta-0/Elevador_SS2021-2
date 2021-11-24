@@ -52,7 +52,7 @@ namespace Elevador_SS2021_2
             ELEVADOR.Rows.Add(6);
 
             //Criando a array do funcionamento subida externa
-            SOBE_EX.RowTemplate.Height = 60;
+            SOBE_EX.RowTemplate.Height = 72;
             SOBE_EX.Rows.Add(6);
             for (int i = 0; i < 6; i++)
             {
@@ -63,9 +63,12 @@ namespace Elevador_SS2021_2
                 else
                     SOBE_EX[0, i].Value = string.Format("{0}", 6 - i);
             }
+            SOBE_EX.Rows[0].Visible = false;//Não tem como chamar para subir no ultimo andar
+
+
 
             //Criando a array do funcionamento descida externa
-            DESCE_EX.RowTemplate.Height = 60;
+            DESCE_EX.RowTemplate.Height = 72;
             DESCE_EX.Rows.Add(6);
             for (int i = 0; i < 6; i++)
             {
@@ -76,6 +79,7 @@ namespace Elevador_SS2021_2
                 else
                     DESCE_EX[0, i].Value = string.Format("{0}", 6 - i);
             }
+            DESCE_EX.Rows[5].Visible = false; //Não tem como chamar para descer no primeiro andar/ terreo
 
         }
 
@@ -142,11 +146,22 @@ namespace Elevador_SS2021_2
             {
                 Manual.Checked = false;
 
+                INTERNO.Enabled = false;
             }
             else
             {
                 Manual.Checked = true;
             }
+  
+            /*
+            Random N_aleatorio = new Random();
+            int Linha = N_aleatorio.Next(0, 6);
+            int chamar = 5 - Linha + 1;
+            ChamarInterno[5 - Linha] = chamar;
+            chamarFILA(chamar);
+            INTERNO.Rows[Linha].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+             */
+            
 
         }
 
@@ -208,7 +223,7 @@ namespace Elevador_SS2021_2
             }
 
         }
-        //oi
+        
 
         //DIVIDINDO O MOVIMENTO DO ELEVADOR EM FUNÇÕES  
         private void Inicio()
