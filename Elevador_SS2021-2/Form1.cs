@@ -93,8 +93,8 @@ namespace Elevador_SS2021_2
             Tempo.Start();
 
             //Definindo as imagens
-            AbrirImagem = new Bitmap("ElevAberto.gif");
-            FecharImagem = new Bitmap("ElevFechado.gif");
+            AbrirImagem = new Bitmap("ElevAberto.JPEG");
+            FecharImagem = new Bitmap("ElevFechado.JPEG");
             DataGridViewImageColumn imageColumn = (DataGridViewImageColumn)ELEVADOR.Columns["Coluna_Imagem"];
             imageColumn.DefaultCellStyle.NullValue = null;
             ELEVADOR[0, 5].Value = FecharImagem;
@@ -143,26 +143,35 @@ namespace Elevador_SS2021_2
         //Definindo os botões de automatico e manual
         private void Automatic_CheckedChanged(object sender, EventArgs e)
         {
-            if (Automatic.Checked == true)
+           
+                if (Automatic.Checked == true)
             {
                 Manual.Checked = false;
 
                 INTERNO.Enabled = false;
+
+                Aleatorio();
             }
             else
             {
                 Manual.Checked = true;
             }
-  
-            /*
-            Random N_aleatorio = new Random();
-            int Linha = N_aleatorio.Next(0, 6);
-            int chamar = 5 - Linha + 1;
-            ChamarInterno[5 - Linha] = chamar;
-            chamarFILA(chamar);
-            INTERNO.Rows[Linha].DefaultCellStyle.BackColor = Color.CornflowerBlue;
-             */
-            
+
+            void Aleatorio()
+            {
+                
+
+                    {
+                        Random N_aleatorio = new Random();
+                        int Linha = N_aleatorio.Next(0, 6);
+                        int chamar = 5 - Linha + 1;
+                        ChamarInterno[5 - Linha] = chamar;
+                        chamarFILA(chamar);
+                        INTERNO.Rows[Linha].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+                    }
+                
+            }
+
 
         }
 
